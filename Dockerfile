@@ -12,15 +12,10 @@ EXPOSE 8000
 
 ARG DEV=false
 RUN apk add --update --no-cache \
-        python3-dev \
         postgresql-client \
         build-base \
         postgresql-dev \
         musl-dev \
-        ca-certificates \
-        libffi-dev \
-        openssl-dev && \
-    update-ca-certificates && \
     python -m venv /py && \
     /py/bin/pip install --upgrade pip setuptools wheel && \
     /py/bin/pip install -r /tmp/requirements.txt --trusted-host pypi.org --trusted-host pypi.python.org --trusted-host files.pythonhosted.org && \
