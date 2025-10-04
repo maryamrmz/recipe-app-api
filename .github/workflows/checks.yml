@@ -55,6 +55,4 @@ jobs:
           python manage.py test
 
       - name: Lint
-        run: |
-          source .venv/bin/activate
-          flake8
+        run: flake8 . --exclude .venv
