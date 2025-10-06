@@ -10,7 +10,7 @@ from django.contrib.auth.models import (
 )
 
 
-def recipe_image_field_path(instance, filename):
+def recipe_image_file_path(instance, filename):
     """Generate file path for new recipe image."""
     ext = os.path.splitext(filename)[1]
     filename = f'{uuid.uuid4()}{ext}'
@@ -65,7 +65,7 @@ class Recipe(models.Model):
     link = models.CharField(max_length=255, blank=True)
     tags = models.ManyToManyField('Tag')
     ingredients = models.ManyToManyField('Ingredient')
-    image = models.ImageField(null=True, upload_to=recipe_image_field_path)
+    image = models.ImageField(null=True, upload_to=recipe_image_file_path)
 
     def __str__(self):
         return self.title
