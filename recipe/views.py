@@ -5,7 +5,10 @@ from rest_framework import (
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
 
-from core.models import Recipe
+from core.models import (
+    Recipe,
+    Tag
+)
 from recipe import serializers
 
 
@@ -37,7 +40,7 @@ class TagViewSet(mixins.DestroyModelMixin,
                  viewsets.GenericViewSet):
     """View for manage tag APIs"""
     serializer_class = serializers.TagSerializer
-    queryset = Recipe.objects.all()
+    queryset = Tag.objects.all()
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsAuthenticated]
 
